@@ -1,0 +1,6 @@
+.widget-user-image img {
+    background: #ffffff;
+}
+.username {
+    text-transform: capitalize;
+}

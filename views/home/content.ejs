@@ -1,0 +1,23 @@
+<!-- jquery validation -->
+<div class="card p-2">
+  <div class="form-group">
+    <label class="sr-only" for="feed_content">post</label>
+    <textarea class="form-control" id="feed_content" rows="3" placeholder="What are you thinking?" required></textarea>
+  </div>
+  
+  <div class="btn-toolbar justify-content-between">
+      <div class="btn-group">
+          <button type="button" id="submit_feed" class="btn btn-primary">share</button>
+      </div>
+  </div>
+</div>
+<!-- /.card -->
+
+<div class="loading text-center" style="display: none">
+  <img src="/images/common/loading.svg" />
+</div>
+<!--- Feeds -->
+<div class="loaded_feeds" id="loaded_feeds">
+    
+</div>
+<!-- /.Feeds -->

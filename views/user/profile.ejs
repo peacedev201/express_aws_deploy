@@ -1,0 +1,278 @@
+<%- include ('../partials/social/header') %>
+    <div class="theme-layout">
+        <%- include ('../partials/social/mb-topbar.ejs') %>
+        <%- include ('../partials/social/topbar.ejs') %>
+        <%- include ('../partials/social/toparea.ejs') %>
+        <!-- main content -->
+        <section>
+            <div class="gap gray-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row merged20" id="page-contents">
+                                <div class="col-lg-3">
+                                    <%- include ('../partials/social/sidebar_activity') %>
+                                </div><!-- sidebar -->
+                                <div class="col-lg-6">
+                                    <div class="central-meta">
+                                        <div class="editing-info">
+                                            <div class="">
+                                                <ul class="nav nav-tabs">
+                                                    <li class="nav-item mr-5"><a data-toggle="tab" href="#basic_info" class="active"><h5 class="f-title"><i class="ti-info-alt"></i> Edit Basic Information</h5></a></li>
+                                                    <li class="nav-item"><a data-toggle="tab" href="#change_password" class=""><h5 class="f-title"><i class="ti-lock"></i>Change Password</h5></a></li>
+                                                </ul>
+                                                <!-- Tab panes -->
+                                                <div class="tab-content">
+                                                  <div id="basic_info" class="tab-pane active fade show">
+                                                    
+                                                    <form id="basic_info_form" method="post" action="/user/update">
+                                                        <div class="form-group half">	
+                                                          <input type="text" id="input" name="firstname" required="required" value="<%= currentUser.firstname %>"/>
+                                                          <label class="control-label" for="firstname">First Name</label><i class="mtrl-select"></i>
+                                                        </div>
+                                                        <div class="form-group half">	
+                                                          <input type="text" required="required" name="lastname" value="<%= currentUser.lastname %>"/>
+                                                          <label class="control-label" for="lastname">Last Name</label><i class="mtrl-select"></i>
+                                                        </div>
+                                                        <div class="form-group">	
+                                                          <input type="email" required="required" name="email" value="<%= currentUser.email %>"/>
+                                                          <label class="control-label" for="email">Email@</label><i class="mtrl-select"></i>
+                                                        </div>
+                                                        <div class="form-group">	
+                                                          <input type="text" required="required" name="username" value="<%= currentUser.username %>"/>
+                                                          <label class="control-label" for="username">Username</label><i class="mtrl-select"></i>
+                                                        </div>
+                                                        <div class="form-group">	
+            											  <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" value="<%= currentUser.phone %>" required>
+            											  <label class="control-label" for="phone">Phone No(123-45-678)</label><i class="mtrl-select"></i>
+            											</div>
+            											<div class="form-group half">
+            											    <input type="date" id="birthday" name="birthday" value="<%= formatDate(currentUser.birthday) %>">
+            											    <label class="control-label" for="birthday">Birthday</label><i class="mtrl-select"></i>
+            											</div>
+            										
+            											<div class="form-group form-radio">
+            											
+                											  <div class="radio">
+                												<label>
+                												  <input type="radio" <%= currentUser.gender=='1'?checked="checked":''%> name="gender" value="1"><i class="check-box"></i>Male
+                												</label><i class="mtrl-select"></i>
+                											  </div>
+                											  <div class="radio">
+                												<label>
+                												  <input type="radio" <%= currentUser.gender=='2'?checked="checked":''%> name="gender" value="2"><i class="check-box"></i>Female
+                												</label><i class="mtrl-select"></i>
+                											  </div>
+                											  <div class="radio">
+                												<label>
+                												  <input type="radio" <%= currentUser.gender=='3'?checked="checked":''%> name="gender" value="3"><i class="check-box"></i>Other
+                												</label><i class="mtrl-select"></i>
+                											  </div>
+            											</div>
+            											
+                                                        <!-- <div class="form-group">	
+                                                            <input type="password"  required="required" name="password" id="password"/>
+                                                            <label class="control-label" for="input">Password</label><i class="mtrl-select"></i>
+                                                        </div>
+                                                        <div class="form-group">	
+                                                            <input type="password" required="required" name="confirm_password" id="confirm_password"/>
+                                                            <label class="control-label" for="input">Confirm Password</label><i class="mtrl-select"></i>
+                                                        </div> -->
+                                                        <div class="form-group">	
+            											  <textarea rows="4" id="textarea" name="about"><%= currentUser.about %></textarea>
+            											  <label class="control-label" for="textarea">About Me</label><i class="mtrl-select"></i>
+            											</div>
+                                                        <div class="submit-btns">
+                                                            <button type="button" class="mtr-btn"><span>Cancel</span></button>
+                                                            <button type="submit" class="mtr-btn"><span>Update</span></button>
+                                                        </div>
+                                                    </form>
+                                                  </div>
+                                                  <div id="change_password" class="tab-pane fade">
+                                                      
+											
+        											  <form id="change_password_form" method="post" action="/user/change_password">
+        											    <div class="form-group">	
+        												  <input type="password" name="current_password" required="required"/>
+        												  <label class="control-label" for="current_password">Current password</label><i class="mtrl-select"></i>
+        												</div>
+        												<div class="form-group">	
+                                                            <input type="password"  required="required" name="password" id="password"/>
+                                                            <label class="control-label" for="password">Password</label><i class="mtrl-select"></i>
+                                                        </div>
+                                                        <div class="form-group">	
+                                                            <input type="password" required="required" name="confirm_password" id="confirm_password"/>
+                                                            <label class="control-label" for="confirm_password">Confirm Password</label><i class="mtrl-select"></i>
+                                                        </div>
+        												
+        												
+        												<div class="submit-btns">
+        													<button type="button" class="mtr-btn"><span>Cancel</span></button>
+        													<button type="submit" class="mtr-btn"><span>Update</span></button>
+        												</div>
+        											  </form>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>	
+                                </div><!-- centerl meta -->
+                                <div class="col-lg-3">
+                                    <%- include ('../partials/social/sidebar_userinfo') %>
+                                </div><!-- sidebar -->
+                            </div>	
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </section>
+        <%- include ('../partials/social/bottomarea.ejs') %>
+    </div>
+    <%- include ('../partials/social/sidebar.ejs') %>
+<%- include ('../partials/social/footer') %>
+<% 
+    function formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+%>
+<script>
+// password and confirm password match
+jQuery(document).ready(function($) {
+    var password = document.getElementById("password")
+      , confirm_password = document.getElementById("confirm_password");
+    
+    function validatePassword(){
+      if(password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+      } else {
+        confirm_password.setCustomValidity('');
+      }
+    }
+    
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+    
+});
+
+//change user avatar
+function readURL(input, id) {
+        if(!confirm('Are you sure to change your avatar?')) return;
+        id = id || '#big_avatar';
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $(id).attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+            //   $('#file-image').removeClass('hidden');
+            //   $('#file-upload-btn').hide();
+        }
+        // Get form
+        var form = $('#change_avatar_form')[0];
+        // Create an FormData object
+        var data = new FormData(form);
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "/upload/image",
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function (data) {
+                console.log("SUCCESS : ", data);
+                //
+                $('#topbar_avatar').attr('src',data.link);
+                
+            	$.ajax({
+		            url : "/user/changeAvatar",
+		            type: "POST",
+		            data : {avatar:data.link},
+		            success: function(data, textStatus, jqXHR)
+		            {
+		                console.log(data);
+		                if(data.success){
+		                	$.notify(data.message, 'success');
+		                }
+		                else{
+		                	$.notify(data.message, 'error');
+		                }
+		            },
+		            error: function (jqXHR, textStatus, errorThrown)
+		            {
+		                console.log(errorThrown);
+		                $.notify('Error', 'error');
+		            }
+		        });
+            },
+            error: function (e) {
+                console.log("ERROR : ", e);
+            }
+        });
+}
+//update user information
+$("#basic_info_form").submit(function(event){
+	event.preventDefault(); //prevent default action 
+	var post_url = $(this).attr("action"); //get form action url
+	var request_method = $(this).attr("method"); //get form GET/POST method
+	var form_data = $(this).serialize(); //Encode form elements for submission
+	
+	$.ajax({
+		url : post_url,
+		type: request_method,
+		data : form_data,
+		success: function (data){
+			if(data.success){
+				$.notify(data.message, 'success');
+			}
+			else{
+				$.notify(data.message, 'error');
+			}
+			
+		},
+		error: function (error){
+			$.notify('Error', 'error');
+		}
+	});
+});
+//change password
+$("#change_password_form").submit(function(event){
+	event.preventDefault(); //prevent default action 
+	var post_url = $(this).attr("action"); //get form action url
+	var request_method = $(this).attr("method"); //get form GET/POST method
+	var form_data = $(this).serialize(); //Encode form elements for submission
+	
+	$.ajax({
+		url : post_url,
+		type: request_method,
+		data : form_data,
+		success: function (data){
+			if(data.success){
+				$.notify(data.message, 'success');
+			}
+			else{
+				$.notify(data.message, 'error');
+			}
+			
+		},
+		error: function (error){
+			$.notify('Error', 'error');
+		}
+	});
+});
+</script>

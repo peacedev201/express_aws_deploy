@@ -1,0 +1,42 @@
+<section>
+    <div class="feature-photo">
+        <figure><img src="/social/images/resources/cover.jpg" alt=""></figure>
+        <form class="edit-phto" action="/upload/image" method="POST"  enctype="multipart/form-data" id="change_avatar_form">
+            <i class="fa fa-camera-retro"></i>
+            <label class="fileContainer">
+                Change Avatar
+            <input type="file" id="change_avatar" name="file" accept="image/*" onchange="readURL(this);"/>
+            </label>
+            <!--<button type="submit">save</button>-->
+        </form>
+        <div class="container-fluid">
+            <div class="row merged">
+                <div class="col-lg-2 col-sm-3">
+                    <div class="user-avatar">
+                        <figure>
+                            <img id="big_avatar"  src="<%= currentUser.avatar %>" alt="">
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-sm-9">
+                    <div class="timeline-info">
+                        <ul>
+                            <li class="admin-name">
+                              <h5><%= currentUser.username %></h5>
+                            </li>
+                            <li>
+                                <a class="<%= url=='/post'?'active':''%>" href="/post" title="" data-ripple="">Post</a>
+                                <a class="" href="#" title="" data-ripple="">Photos</a>
+                                <a class="" href="#" title="" data-ripple="">Videos</a>
+                                <a class="" href="#" title="" data-ripple="">Tribe</a>
+                                <a class="" href="#" title="" data-ripple="">Dreams</a>
+                                <a class="<%= url=='/user/profile'?'active':''%>" href="/user/profile" title="" data-ripple="">About</a>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- top area -->

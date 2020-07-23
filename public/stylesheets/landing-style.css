@@ -1,0 +1,71 @@
+.logo {
+  width: 120px;
+}
+.hero-section {
+  color: white;
+  background-image: url("https://blog.theclymb.com/wp-content/uploads/2017/11/shutterstock_531278920.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  padding-top: 0px;
+  margin-bottom: 0px;
+}
+.hero-content {
+  padding: 40px 0px;
+}
+.hero-text {
+  margin-bottom: 15px;
+}
+.display-4 span {
+  font-weight: 600;
+}
+.hero-widget {
+  margin: 0 auto;
+}
+#success_message, #failure_message {
+  display: none;
+  font-weight: bold;
+}
+/* Tabs*/
+section {
+    padding: 40px 0;
+}
+
+#tabs{
+	background: #ffffff;
+  color: #01bcd4;
+}
+#tabs h6.section-title{
+    color: #eee;
+}
+
+#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #f3f3f3;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 4px solid !important;
+    font-size: 20px;
+    font-weight: bold;
+}
+#tabs .nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #01bcd4;
+    font-size: 20px;
+}
+#tabs #nav-tabContent {
+  padding: 10px 20px;
+}
+
+.footer-link {
+  padding: 0;
+}
+.footer-link li {
+  display: inline;
+  padding: 2px;
+}
+.footer-link li a {
+  color: #ffffff;
+}

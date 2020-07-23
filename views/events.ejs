@@ -1,0 +1,56 @@
+  <% include partials/header %>
+  
+  <img src="https://www.wrmf.com/wp-content/uploads/2020/03/iStock_ConcertCrowd_031220.jpg" class="img-responsive" style="width:100%">
+  
+ <div class="container">
+     <header class="jumbotron">
+         <div class="container">
+             <h1>Welcome To Events by Dreamify!</h1>
+             <p>View our hand-picked events from all over the world</p>
+             <p>
+                <a class="btn btn-primary btn-large" href="/events/new">Add New Event</a>
+             </p>
+         </div>
+     </header>
+     
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% events.forEach(function(event){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= event.image %>">
+                   <div class="caption">
+                       <h4><%= event.name %></h4>
+                   </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+                <UL> 
+                
+<h3>Categories</h3>
+        <h5><a href="/productbox"><li>Business</li></a></h5>
+        <h5><a href="/comments"><li>Food & Drink</li></a></h5>
+        <h5><a href="/content"><li>Health</li></a></h5>
+        <h5><a href="/ads"><li>Music</li></a></h5>
+        <h5><a href="/friends"><li>Auto, Boat & Air</li></a></h5>
+        <h5><a href="/trending"><li>Charity & Causes</li></a></h5>
+        <h5><a href="/productbox"><li>Community</li></a></h5>
+        <h5><a href="/comments"><li>Family & Education</li></a></h5>
+        <h5><a href="/content"><li>Fashion</li></a></h5>
+        <h5><a href="/ads"><li>Film & Media</li></a></h5>
+        <h5><a href="/friends"><li>Home & Lifestyle</li></a></h5>
+        <h5><a href="/trending"><li>Performing & Visual Arts</li></a></h5>
+        <h5><a href="/comments"><li>Government</li></a></h5>
+        <h5><a href="/content"><li>Spirituality</li></a></h5>
+        <h5><a href="/ads"><li>School Activities</li></a></h5>
+        <h5><a href="/trending"><li>Science & Tech</li></a></h5>
+        <h5><a href="/comments"><li>Holiday</li></a></h5>
+        <h5><a href="/content"><li>Sports & Fitness</li></a></h5>
+        <h5><a href="/ads"><li>Travel & Outdoor</li></a></h5>
+        <h5><a href="/ads"><li>Other</li></a></h5>
+
+    </UL>
+
+<% include partials/footer %>

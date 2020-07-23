@@ -1,0 +1,167 @@
+<%- include ('../partials/landing-header') %>
+    <div class="jumbotron jumbotron-fluid hero-section">
+      <!-- As a link -->
+        <nav class="navbar navbar-light">
+          <a class="navbar-brand" href="#">
+            <img class="logo" src="http://www.dreamify.com/9c6b61fb1e7d2d27d5c070bf2e50905d.png" alt="Dreamify-logo">
+          </a>
+        </nav>
+      <div class="container">
+        <div class="hero-content">
+          <div class="row">
+            <div class="col-12 text-center hero-text">
+              <h1 class="display-4">Live Your <span>Dreams!</span></h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col col-xs-12 col-md-5 hero-widget">
+              <!-- Tabs -->
+              <section id="tabs">
+              	<div class="container">
+    					    <p id="success_message" class="text-success text-center"></p>
+    					    <p id="failure_message" class="text-danger text-center"></p>
+              		<div class="row">
+              			<div class="col-12 ">
+              				<nav>
+              					<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+              						<a class="nav-item nav-link active" id="nav-sign_in-tab" data-toggle="tab" href="#nav-sign_in" role="tab" aria-controls="nav-sign_in" aria-selected="true">SIGN IN</a>
+              						<a class="nav-item nav-link" id="nav-sign_up-tab" data-toggle="tab" href="#nav-sign_up" role="tab" aria-controls="nav-sign_up" aria-selected="false">SIGN UP</a>
+              					</div>
+              				</nav>
+              				<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+              					<div class="tab-pane fade show active" id="nav-sign_in" role="tabpanel" aria-labelledby="nav-sign_in-tab">
+                            <form action="/user/login" method="post" id="sign_in_form">
+                              <div class="form-group">
+                                <!--<label for="userEmail">Email address</label>-->
+                                <input type="email" class="form-control" name="email" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
+                              </div>
+                              <div class="form-group">
+                                <!--<label for="userPassword">Password</label>-->
+                                <input type="password" class="form-control" name="password" id="userPassword" placeholder="Password" required>
+                              </div>
+                              <div class="row">
+                                <div class="col-6">
+                                  <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <a href="">Forgot Password?</a>
+                                </div>
+                              </div>
+                              <button type="submit" id="login" class="btn btn-primary btn-lg btn-block">SIGN IN</button>
+                            </form>
+              					</div>
+              					<div class="tab-pane fade" id="nav-sign_up" role="tabpanel" aria-labelledby="nav-sign_up-tab">
+              					  <form action="/user/register" method="post" id="sign_up_form">
+              					    <div class="form-group">
+                              <!--<label for="userSignupEmail">Email address</label>-->
+                              <input type="text" name="username" class="form-control"  placeholder="Enter username" required>
+                            </div>
+                            <div class="form-group">
+                              <!--<label for="userSignupEmail">Email address</label>-->
+                              <input type="email" name="email" class="form-control"  placeholder="Enter email" required>
+                            </div>
+                            <div class="form-group">
+                              <!--<label for="userSignupPassword">Password</label>-->
+                              <input type="password" name="password" id="password" class="form-control"  placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                              <!--<label for="userSignupPassword">Password</label>-->
+                              <input type="password" name="confirm_password" id="confirm_password" class="form-control"  placeholder="Confirm Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">SIGN UP</button>
+                          </form>
+              					</div>
+              				</div>
+              			
+              			</div>
+              		</div>
+              	</div>
+              </section>
+              <!-- ./Tabs -->
+              <div class="footer text-center">
+                <p>Dreamify © 2020</p>
+                <ul class="footer-link">
+                  <li><a href="/about">About</a></li>✦
+                  <li><a href="/privacy-policy">Privacy Policy</a></li>✦
+                  <li><a href="/terms">Terms & Conditions</a></li>✦
+                  <li><a href="/developers">Developers</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<%- include ('../partials/landing-footer') %>
+<script>
+// password and confirm password match
+jQuery(document).ready(function($) {
+    var password = document.getElementById("password")
+      , confirm_password = document.getElementById("confirm_password");
+    
+    function validatePassword(){
+      if(password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+      } else {
+        confirm_password.setCustomValidity('');
+      }
+    }
+    
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+    
+});
+$("#sign_in_form").submit(function(event){
+	event.preventDefault(); //prevent default action 
+	var post_url = $(this).attr("action"); //get form action url
+	var request_method = $(this).attr("method"); //get form GET/POST method
+	var form_data = $(this).serialize(); //Encode form elements for submission
+	
+	$.ajax({
+		url : post_url,
+		type: request_method,
+		data : form_data,
+		success: function (data){
+			if(data.success){
+				$.notify(data.message, 'success');
+				window.location.replace(document.URL+'post');
+			}
+			else{
+				$.notify(data.message, 'error');
+			}
+			
+		},
+		error: function (error){
+			$.notify('Error', 'error');
+		}
+	});
+});
+$("#sign_up_form").submit(function(event){
+	event.preventDefault(); //prevent default action 
+	var post_url = $(this).attr("action"); //get form action url
+	var request_method = $(this).attr("method"); //get form GET/POST method
+	var form_data = $(this).serialize(); //Encode form elements for submission
+	
+	$.ajax({
+		url : post_url,
+		type: request_method,
+		data : form_data,
+		success: function (data){
+			if(data.success){
+				$.notify(data.message, 'success');
+				window.location.replace(document.URL+'post');
+			}
+			else{
+				$.notify(data.message, 'error');
+			}
+			
+		},
+		error: function (error){
+			$.notify('Error', 'error');
+		}
+	});
+});
+</script>

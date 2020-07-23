@@ -1,0 +1,59 @@
+<% include ../partials/landing-header %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+              <img class="logo" src="http://www.dreamify.com/9c6b61fb1e7d2d27d5c070bf2e50905d.png" alt="Dreamify-logo">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Notifications</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 Guest <img src="/images/default-avatar.png" alt="user's avatar" class="rounded-circle border" width="30">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Profile</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/user/logout">Logout</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    
+    <section class="feed">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col col-xs-12 col-md-3"><% include parts/left-sidebar %></div>
+          <div class="col col-xs-12 col-md-6"><% include parts/content %></div>
+          <div class="col col-xs-12 col-md-3"><% include parts/right-sidebar %></div>
+        </div>
+      </div>
+    </section>
+    
+    <!--<section>
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <%
+                if (currentUser) { 
+                    displayName = currentUser.email;
+                } else {
+                    displayName = "Guest";
+                }
+            %>
+            <h1 class="display-4">Welcome <%= displayName %> </h1>
+            <p class="lead">Your feed will appear here...</p>
+          </div>
+        </div>
+    </section>-->
+<% include ../partials/landing-footer %>
